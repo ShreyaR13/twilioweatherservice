@@ -7,12 +7,14 @@
     $file = file_get_contents($url);
         foreach ($data as $character) {
         if($character['city.name'] == $body) {
-          $temp_min = $character['temp_min'];
-          $temp_max = $character['temp_max'];
+          $temperature.min = $character['temperature.min'];
+          $temperature.max = $character['temperature.max'];
         echo "<Response>
             <Say>
-                   Minimum Temperature of " . $city.name . " is " . $temp_min . "
-                   Maximum Temperature of " . $city.name . " is " . $temp_max . "
+                   Minimum Temperature of " . $city.name . " is " . $temperature.min . "
+                   Maximum Temperature of " . $city.name . " is " . $temperature.max . "
+                   Temperature Unit " . $city.name . " is " . $temperature.unit . "
+
             </Say>
         </Response>
         ";
