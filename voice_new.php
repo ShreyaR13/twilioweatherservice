@@ -1,11 +1,11 @@
 <?php
     header("content-type: text/xml");
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-    $number = $_POST['From'];
-    $body = $_POST['Body'];
+    // $number = $_POST['From'];
+    // $body = $_POST['Body'];
 
     $curlSession = curl_init();
-    curl_setopt($curlSession, CURLOPT_URL,'http://api.openweathermap.org/data/2.5/weather?q=' . $body . '&appid=ef77ade3db3ce484b43606e2095ff696&units=imperial');
+    curl_setopt($curlSession, CURLOPT_URL,'http://api.openweathermap.org/data/2.5/weather?q=new%20jersey&appid=ef77ade3db3ce484b43606e2095ff696&units=imperial');
     curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
     curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
