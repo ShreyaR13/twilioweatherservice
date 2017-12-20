@@ -38,4 +38,3 @@ if ($jsonData->cod == 200) {
         ";
 }
     curl_close($curlSession);
-?>
