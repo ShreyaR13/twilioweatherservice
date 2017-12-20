@@ -5,8 +5,6 @@
     require 'twilio-php-master/Services/Twilio.php';
     use Twilio\Rest\Client;
 
-    $client = new Client($account_sid, $auth_token);
-
     $number = $_POST['From'];
     $body = $_POST['Body'];
 
