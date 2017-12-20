@@ -9,8 +9,8 @@
     $body = $_POST['Body'];
 
     // Step 2: Set our AccountSid and AuthToken from https://twilio.com/console
-    $AccountSid = "ACc2ee9a0b7bd01ddfd3079fc23a433407";
-    $AuthToken = "6a7fed7f68a9d89d75996bc165982d2b";
+    $AccountSid = "Please Enter";
+    $AuthToken = "Please Enter";
 
     // Step 3: Instantiate a new Twilio Rest Client
     $client = new Client($AccountSid, $AuthToken);
