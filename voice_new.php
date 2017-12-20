@@ -15,19 +15,23 @@ if ($jsonData->cod == 200) {
     $tempData = $jsonData->main;
     $cityName = $jsonData->name;
 
-        echo "<Response>
-            <Say>
-                   City name is " . $cityName . ".
-                   Current Temperature is " . $tempData->temp . ".
-                   Minimum Temperature is " . $tempData->temp_min . ".
-                   Maximum Temperature is " . $tempData->temp_max . ".
-                   Temperature Unit is Fahrenheit.
-            </Say>
-        </Response>
-        ";
+    echo "<Response>
+    <Say voice=\"alice\">
+    City name is " . $cityName . ".
+    Current Temperature is " . $tempData->temp . ".
+    Minimum Temperature is " . $tempData->temp_min . ".
+    Maximum Temperature is " . $tempData->temp_max . ".
+    Temperature Unit is Fahrenheit.
+    </Say>
+    <Pause length=\"1\"/>
+    <Say voice=\"alice\">
+    Thanks for you message, have a Good One. Jai Bhim.
+    </Say>
+    </Response>"
+
 }else{
             echo "<Response>
-            <Say>
+            <Say voice=\"alice\">
             Please enter valid city name! Or it might be a server error.
             </Say>
         </Response>

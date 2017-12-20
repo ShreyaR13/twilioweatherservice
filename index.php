@@ -24,7 +24,7 @@
             "+12674407881",
 
             // Step 6: Set the URL Twilio will request when the call is answered.
-            array("url" => "https://demo.twilio.com/docs/voice.xml")
+            array("url" => "https://twilioweatherservice.herokuapp.com/voice_new.php")
         );
         echo "Started call: " . $call->sid;
     } catch (Exception $e) {
