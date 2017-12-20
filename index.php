@@ -24,7 +24,7 @@
             "+12674407881",
 
             // Step 6: Set the URL Twilio will request when the call is answered.
-            array("url" => "https://troubled-gun-1513.twil.io/assets/voice_new.php")
+            array("url" => "https://demo.twilio.com/docs/voice.xml")
         );
         echo "Started call: " . $call->sid;
     } catch (Exception $e) {
