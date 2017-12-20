@@ -27,7 +27,7 @@ Temperature Unit is Fahrenheit.
 <Say voice=\"alice\">
 Thanks for you message, have a Good One. Jai Bhim.
 </Say>
-</Response>"
+</Response>";
 
 }else{
         echo "<Response>
