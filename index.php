@@ -20,7 +20,7 @@
         $call = $client->account->calls->create(
             // Step 4: Change the 'To' number below to whatever number you'd like
             // to call.
-            "+12016809992",
+            $number,
 
             // Step 5: Change the 'From' number below to be a valid Twilio number
             // that you've purchased or verified with Twilio.
