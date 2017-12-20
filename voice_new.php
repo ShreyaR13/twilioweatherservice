@@ -1,11 +1,10 @@
 <?php
     header("content-type: text/xml");
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-    // $number = $_POST['From'];
-    // $body = $_POST['Body'];
+    $city = $_GET['City'];
 
     $curlSession = curl_init();
-    curl_setopt($curlSession, CURLOPT_URL,'http://api.openweathermap.org/data/2.5/weather?q=new%20jersey&appid=ef77ade3db3ce484b43606e2095ff696&units=imperial');
+    curl_setopt($curlSession, CURLOPT_URL,'http://api.openweathermap.org/data/2.5/weather?q=' . $city . '&appid=ef77ade3db3ce484b43606e2095ff696&units=imperial');
     curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
     curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
@@ -25,7 +24,7 @@ if ($jsonData->cod == 200) {
     </Say>
     <Pause length=\"1\"/>
     <Say voice=\"alice\">
-    Thanks for you message, have a Good One. Jai Bhim.
+    Thanks for you message, have a Good One.
     </Say>
     </Response>";
 

@@ -5,6 +5,11 @@
     require 'twilio-php-master/Services/Twilio.php';
     use Twilio\Rest\Client;
 
+    $client = new Client($account_sid, $auth_token);
+
+    $number = $_POST['From'];
+    $body = $_POST['Body'];
+
     // Step 2: Set our AccountSid and AuthToken from https://twilio.com/console
     $AccountSid = "ACc2ee9a0b7bd01ddfd3079fc23a433407";
     $AuthToken = "6a7fed7f68a9d89d75996bc165982d2b";
@@ -24,7 +29,7 @@
             "+12674407881",
 
             // Step 6: Set the URL Twilio will request when the call is answered.
-            array("url" => "https://twilioweatherservice.herokuapp.com/voice_new.php")
+            array("url" => "https://twilioweatherservice.herokuapp.com/voice_new.php?City=" . $body)
         );
         echo "Started call: " . $call->sid;
     } catch (Exception $e) {

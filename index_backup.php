@@ -1,40 +1,38 @@
 <?php
-header("content-type: text/xml");
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-// $number = $_POST['From'];
-// $body = $_POST['Body'];
+    require_once 'twilio-php-master/Twilio/autoload.php'; // Loads the library
+    require 'twilio-php-master/Services/Twilio.php';
+    use Twilio\Rest\Client;
+    $account_sid = 'ACc2ee9a0b7bd01ddfd3079fc23a433407';
+    $auth_token = '6a7fed7f68a9d89d75996bc165982d2b';
+    $client = new Client($account_sid, $auth_token);
 
-$curlSession = curl_init();
-curl_setopt($curlSession, CURLOPT_URL,'http://api.openweathermap.org/data/2.5/weather?q=new%20jersey&appid=ef77ade3db3ce484b43606e2095ff696&units=imperial');
-curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+$number = $_POST['From'];
+$body = $_POST['Body'];
+$url = 'api.openweathermap.org/data/2.5/weather?q=city.name&APPID=ef77ade3db3ce484b43606e2095ff696';
+$file = file_get_contents($url);
+// $data = json_decode($file, true);
+// global $city.name;
 
-$jsonData = json_decode(curl_exec($curlSession));
-
-if ($jsonData->cod == 200) {
-$tempData = $jsonData->main;
-$cityName = $jsonData->name;
-
-echo "<Response>
-<Say voice=\"alice\">
-City name is " . $cityName . ".
-Current Temperature is " . $tempData->temp . ".
-Minimum Temperature is " . $tempData->temp_min . ".
-Maximum Temperature is " . $tempData->temp_max . ".
-Temperature Unit is Fahrenheit.
-</Say>
-<Pause length=\"1\"/>
-<Say voice=\"alice\">
-Thanks for you message, have a Good One. Jai Bhim.
-</Say>
-</Response>";
-
-}else{
-        echo "<Response>
-        <Say voice=\"alice\">
-        Please enter valid city name! Or it might be a server error.
-        </Say>
-    </Response>
-    ";
+foreach ($data as $character) {
+        if($character['city.name'] == $body) {
+          $temp_min = $character['temp_min'];
+          $temp_max = $character['temp_max'];
+            break;
+        }
 }
-curl_close($curlSession);
+            try {
+        // Initiate a new outbound call
+        $call = $client->account->calls->create(
+            $number,
+            "+12674407881",
+            // Step 6: Set the URL Twilio will request when the call is answered.
+           //array("url" => "http://demo.twilio.com/welcome/voice/")
+           array("url" => "https://troubled-gun-1513.twil.io/assets/voice_resp.php")
+        );
+
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+
+header('Content-Type: text/xml');
+?>
